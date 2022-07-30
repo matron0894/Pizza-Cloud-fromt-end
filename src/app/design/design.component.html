@@ -1,0 +1,49 @@
+<cloud-title>Создайте свой шедевр пиццы</cloud-title>
+
+<p>Мы предлагаем палитру свежих ингредиентов... вы вдохновляете! Выберите
+  компоненты, которые соберутся вместе, как ваше венчающее достижение мастерства пиццы.</p>
+
+<form (ngSubmit)="onSubmit()">
+  <div class="ingredients-block" style="text-align: center; width: 100%;">
+    <group-box title="Закажите свою основу">
+      <span *ngFor="let wrap of wraps">
+        <input type="checkbox" (change)="updateIngredients(wrap, $event)" name="ingredients" value="{{wrap.id}}"/>
+        {{wrap.name}}
+        <br/>
+      </span>
+    </group-box>
+    <group-box title="Подберите мясо">
+      <span *ngFor="let protein of proteins">
+        <input type="checkbox" (change)="updateIngredients(protein, $event)" name="ingredients" value="{{protein.id}}"/>
+        {{protein.name}}
+        <br/>
+      </span>
+    </group-box>
+    <group-box title="Определитесь с сыром">
+      <span *ngFor="let cheese of cheeses">
+        <input type="checkbox" (change)="updateIngredients(cheese, $event)" name="ingredients" value="{{cheese.id}}"/>
+        {{cheese.name}}
+        <br/>
+      </span>
+    </group-box>
+    <group-box title="Выберите овощи">
+      <span *ngFor="let veggie of veggies">
+        <input type="checkbox" (change)="updateIngredients(veggie, $event)" name="ingredients" value="{{veggie.id}}"/>{{veggie.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Решитесь на  соус(ы)">
+      <span *ngFor="let sauce of sauces">
+        <input type="checkbox" (change)="updateIngredients(sauce, $event)" name="ingredients" value="{{sauce.id}}"/>
+        {{sauce.name}}<br/>
+      </span>
+    </group-box>
+    <group-box title="Назовите Ваш шедевр">
+      Мой великий опус будет называться<br/>
+       "<input type="text" [(ngModel)]="model.name" name="name" class="nameField"/>"!
+    </group-box>
+  </div>
+
+  <div style="text-align:center; width:100%;">
+    <big-button label="Создай свою пиццу"></big-button>
+  </div>
+</form>

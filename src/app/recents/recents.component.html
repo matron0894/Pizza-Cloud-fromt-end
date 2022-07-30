@@ -1,0 +1,22 @@
+<cloud-title>Полюбуйтесь недавно созданными шедеврами пиццы</cloud-title>
+
+<p>Даже величайшим художникам иногда нужно вдохновляться работами других.
+  Вот некоторые из недавно созданных пицц, созданных такими же мастерами, как и вы...</p>
+
+<div class="recentsblock">
+  <div class="resentsblock" *ngFor="let pizza of recentProducts">
+      <div class="productName"><span class="small">The</span><br/>"{{pizza.name}}"</div>
+      <div class="productDesc">
+        <ul class="commalist">
+          <li *ngFor="let ingredient of pizza.ingredients | nonwraps">{{ingredient.name}}</li>
+        </ul>
+        <div *ngIf="(pizza.ingredients | wraps)?.length > 0">
+        <span>wrapped in</span><ul class="commalist">
+            <li *ngFor="let ingredient of pizza.ingredients | wraps">{{ingredient.name}}</li>
+        </ul>
+        </div>
+        <div *ngIf="(pizza.ingredients | wraps)?.length == 0">in a bowl</div>
+      </div>
+      <little-button label="Order this pizza"></little-button>
+  </div>
+</div>
